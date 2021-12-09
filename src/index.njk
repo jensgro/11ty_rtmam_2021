@@ -1,0 +1,34 @@
+---
+permalink: index.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="module" src="/assets/js/main.bundle.js"></script>
+</head>
+<body>
+  {% set suffix = "ty" %}
+  <p>Hello {{ 10 + 1 }}{{ suffix }}</p>
+
+  {% for item in collections.team %}
+    <div>
+      <h2><a href="{{ item.url }}">{{ item.data.name }} {{ item.data.surname }}</a></h2>
+      <p>Class: {{ item.data.class }}</p>
+      {% for specialty in items.data.specialties %}
+        {% if loop.first %}<ul>{% endif %}
+          <li>{{ specialty }}</li>
+        {% if loop.last %}</ul>{% endif %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+
+  {% for item in insults %}
+      <p>{{ item.animal }} {{ item.location }}</p>
+  {% endfor %}
+
+</body>
+</html>

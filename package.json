@@ -1,0 +1,32 @@
+{
+  "name": "rtmam-11ty",
+  "version": "1.0.0",
+  "description": "My first Eleventy Website",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf \"dist/\"",
+    "server": "browser-sync start --server \"dist/\" --files \"dist/\" --no-open",
+    "styles:prod": "sass --no-source-map --style=\"compressed\" \"src/assets/scss/main.scss\" \"dist/assets/css/main.css\"",
+    "styles:dev": "sass --embed-source-map --source-map-urls=\"absolute\" \"src/assets/scss/main.scss\" \"dist/assets/css/main.css\"",
+    "scripts:dev": "esbuild \"src/assets/js/main.js\" --outfile=\"dist/assets/js/main.bundle.js\" --target=\"es6\" --bundle --sourcemap=inline",
+    "scripts:prod": "esbuild \"src/assets/js/main.js\" --outfile=\"dist/assets/js/main.bundle.js\" --target=\"es6\" --bundle --minify",
+    "eleventy": "npx eleventy",
+    "watch:eleventy": "npx eleventy --watch",
+    "watch:styles": "onchange \"src/assets/scss/**/*\" -- npm run styles:dev",
+    "watch:scripts": "onchange \"src/assets/js/**/*\" -- npm run scripts:dev",
+    "build": "npm-run-all clean --parallel eleventy styles:prod scripts:prod",
+    "dev": "npm-run-all --parallel server watch:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1",
+    "browser-sync": "^2.27.7",
+    "esbuild": "^0.14.2",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "rimraf": "^2.7.1",
+    "sass": "^1.44.0"
+  }
+}
