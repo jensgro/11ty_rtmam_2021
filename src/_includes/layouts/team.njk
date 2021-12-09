@@ -1,0 +1,15 @@
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+  <h1>{{ name }} {{ surname }}</h1>
+  <p>{{ class }}</p>
+  {% for specialty in specialties %}
+    {% if loop.first %}<ul>{% endif %}
+
+      <li>
+        {{ specialty }}
+      </li>
+
+    {% if loop.last %}</ul>{% endif %}
+  {% endfor %}
+{% endblock %}
