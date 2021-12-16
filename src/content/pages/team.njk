@@ -1,13 +1,12 @@
 ---
-permalink: index.html
+permalink: team/index.html
 ---
 
 {% extends "layouts/base.njk" %}
 
 {% block content %}
 
-  {% set suffix = "ty" %}
-  <p>Hello {{ 10 + 1 }}{{ suffix }}</p>
+  <h1>Our kick-ass team</h1>
 
   {% for item in collections.team %}
     {% if loop.first %}<ul>{% endif %}
@@ -23,10 +22,6 @@ permalink: index.html
     </li>
 
     {% if loop.last %}</ul>{% endif %}
-  {% endfor %}
-
-  {% for item in insults %}
-      <p>{{ item.animal }} {{ item.location }}</p>
   {% endfor %}
 
 {% endblock %}

@@ -1,0 +1,16 @@
+<nav>
+  {% for navitem in mainnav %}
+    {% if loop.first %}<ul class="c-mainnav">{% endif %}
+
+      {% set activeClass = "" %}
+      {% set activeAria = "" %}
+      {% if item.navTrigger == activeSection %}
+        {% set activeClass = "is-active" %}
+        {% set activeAria = 'aria-current="page"' | safe %}
+      {% endif %}
+
+      <li class="c-mainnav__item"><a class="c-mainnav__link  {{ activeClass }}" href="{{ navitem.url }}" {{ activeAria }}>{{ navitem.label }}</a></li>
+
+    {% if loop.last %}</ul>{% endif %}
+  {% endfor %}
+</nav>
