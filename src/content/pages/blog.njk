@@ -4,6 +4,24 @@ permalink: /blog/index.html
 
 {% extends "layouts/base.njk" %}
 
+{# nav active section #}
+{% set activeSection = "blog" %}
+
 {% block content %}
   <h1>Our blog</h1>
+
+  {% set allBlogposts = collections.blogposts %}
+  {% for post in allBlogposts %}
+    {% if loop.first %}<ul>{% endif %}
+
+      <li>
+        <article>
+          <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+          <p><time datetime="{{ post.date | dateISO }}">{{ post.date | dateFull }}</time></p>
+          <p>{{ post.data.intro }}</p>
+        </article>
+      </li>
+
+    {% if loop.last %}</ul>{% endif %}
+  {% endfor %}
 {% endblock %}

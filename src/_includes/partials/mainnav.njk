@@ -4,7 +4,7 @@
 
       {% set activeClass = "" %}
       {% set activeAria = "" %}
-      {% if item.navTrigger == activeSection %}
+      {% if navitem.trigger == activeSection %}
         {% set activeClass = "is-active" %}
         {% set activeAria = 'aria-current="page"' | safe %}
       {% endif %}

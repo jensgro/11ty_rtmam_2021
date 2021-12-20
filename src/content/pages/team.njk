@@ -4,6 +4,9 @@ permalink: team/index.html
 
 {% extends "layouts/base.njk" %}
 
+{# nav active section #}
+{% set activeSection = "team" %}
+
 {% block content %}
 
   <h1>Our kick-ass team</h1>
@@ -14,7 +17,7 @@ permalink: team/index.html
     <li>
       <h2><a href="{{ item.url }}">{{ item.data.name }} {{ item.data.surname }}</a></h2>
       <p>Class: {{ item.data.class }}</p>
-      {% for specialty in items.data.specialties %}
+      {% for specialty in item.data.specialties %}
         {% if loop.first %}<ul>{% endif %}
           <li>{{ specialty }}</li>
         {% if loop.last %}</ul>{% endif %}

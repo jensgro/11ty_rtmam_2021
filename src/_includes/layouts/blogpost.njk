@@ -1,0 +1,21 @@
+{% extends "layouts/base.njk" %}
+
+{# nav active section #}
+{% set activeSection = "blog" %}
+
+{% block content %}
+  <picture>
+    <source
+      media="(min-width: 600px)"
+      srcset="/assets/img/blogposts/1024x576/{{ image }} 1024w,
+              /assets/img/blogposts/{{ image }} 1500w"
+      sizes="100vw">
+    <img src="/assets/img/blogposts/600x600/{{ image }}"
+         class="o-fluidimg"
+         alt="{{ imageAlt }}">
+  </picture>
+
+  <h1>{{ title }}</h1>
+  <p>{{ intro }}</p>
+  {{ content | safe }}
+{% endblock %}
