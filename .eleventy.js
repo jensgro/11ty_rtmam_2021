@@ -27,6 +27,11 @@ module.exports = function (eleventyConfig) {
     return dt.toISODate();
   });
 
+  // shortcode video
+  eleventyConfig.addShortcode("video", function (videoId) {
+    return `<iframe src="https://www.youtube.com/embed/${videoId}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+  });
+
   // copy files
   eleventyConfig.addPassthroughCopy("./src/assets/img");
 
@@ -35,6 +40,8 @@ module.exports = function (eleventyConfig) {
     dir: {
       input: "src",
       output: "dist",
+      // processer d'abord les fichiers markdown avec nunjucks avant de les transformer en HTML
+      markdownTemplateEngine: "njk",
     },
   };
 };

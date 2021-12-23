@@ -12,4 +12,5 @@
 
     {% if loop.last %}</ul>{% endif %}
   {% endfor %}
+  {{ content | safe }}
 {% endblock %}
