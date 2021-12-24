@@ -1,0 +1,21 @@
+---
+pagination:
+  data: ships
+  size: 1
+  alias: ship
+permalink: "{{ ship.url }}/index.html"
+---
+
+{% extends "layouts/base.njk" %}
+
+{# nav active section #}
+{% set activeSection = "ships" %}
+
+{% block content %}
+  <h1>{{ ship.name }}</h1>
+  <p>Manufacturer: {{ ship.manufacturer }}</p>
+  <ul>
+    <li>Model: {{ ship.model }}</li>
+    <li>Crew: {{ ship.crew }}</li>
+  </ul>
+{% endblock %}

@@ -1,0 +1,28 @@
+---
+permalink: ships/index.html
+---
+
+{% extends "layouts/base.njk" %}
+
+{# nav active section #}
+{% set activeSection = "ships" %}
+
+{% block content %}
+
+  <h1>Starwars Ships</h1>
+
+  {#
+    in 11ty, the content of data files (static or dynamic)
+    can be accessed by using the name of the dta file as key
+
+    data in `_data/ships.js` can be accessed with `ships`
+  #}
+  {% for ship in ships %}
+    {% if loop.first %}<ul>{% endif %}
+      <li>
+        <a href="{{ ship.url }}">{{ ship.name }}</a> by {{ ship.manufacturer }}
+      </li>
+    {% if loop.last %}</ul>{% endif %}
+  {% endfor %}
+
+{% endblock %}

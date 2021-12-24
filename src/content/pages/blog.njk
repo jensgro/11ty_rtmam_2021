@@ -1,5 +1,9 @@
 ---
-permalink: /blog/index.html
+pagination:
+  data: collections.blogposts
+  size: 2
+  alias: blogposts
+permalink: "/blog{% if pagination.pageNumber > 0 %}/{{ pagination.pageNumber + 1 }}{% endif %}/index.html"
 ---
 
 {% extends "layouts/base.njk" %}
@@ -10,8 +14,7 @@ permalink: /blog/index.html
 {% block content %}
   <h1>Our blog</h1>
 
-  {% set allBlogposts = collections.blogposts %}
-  {% for post in allBlogposts %}
+  {% for post in blogposts %}
     {% if loop.first %}<ul>{% endif %}
 
       <li>
@@ -24,4 +27,16 @@ permalink: /blog/index.html
 
     {% if loop.last %}</ul>{% endif %}
   {% endfor %}
+
+  {% if pagination.pages | length > 1 %}
+    <ul>
+      {% if pagination.href.previous %}
+        <li><a href="{{ pagination.href.previous }}">&larr;&nbsp;previous</a></li>
+      {% endif %}
+      {% if pagination.href.next %}
+        <li><a href="{{ pagination.href.next }}">next&nbsp;&rarr;</a></li>
+      {% endif %}
+    </ul>
+  {% endif %}
+
 {% endblock %}

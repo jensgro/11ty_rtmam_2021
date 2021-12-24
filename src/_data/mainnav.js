@@ -14,4 +14,9 @@ module.exports = [
     trigger: "team",
     url: "/team/",
   },
+  {
+    label: "Starships",
+    trigger: "ships",
+    url: "/ships/",
+  },
 ];
