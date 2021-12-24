@@ -15,13 +15,13 @@ module.exports = function (eleventyConfig) {
       .reverse();
   });
 
-  // filter dateFull
+  // filter dateFull (Luxon)
   eleventyConfig.addFilter("dateFull", function (jsDate, locale = "en") {
     let dt = DateTime.fromJSDate(jsDate);
     return dt.setLocale(locale).toLocaleString(DateTime.DATE_FULL);
   });
 
-  // filter dateISO
+  // filter dateISO (Luxon)
   eleventyConfig.addFilter("dateISO", function (jsDate) {
     let dt = DateTime.fromJSDate(jsDate);
     return dt.toISODate();
